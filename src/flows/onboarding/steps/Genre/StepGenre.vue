@@ -23,7 +23,7 @@
 import { ref } from "vue"
 
 // import Progress from "./Progress.vue"
-import Button from "./Button.vue"
+import Button from '../../../../components/Button.vue'
 import Genre from "./Genre.vue"
 
 const emit = defineEmits(["next"])

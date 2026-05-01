@@ -15,27 +15,28 @@
 <script setup>
 import { ref, reactive, computed, defineAsyncComponent } from 'vue'
 
-import StepHeader from './components/StepHeader.vue'
+import StepHeader from './flows/onboarding/StepHeader.vue'
 import Progress from './components/Progress.vue'
 
-import StepInstrument from './components/StepInstrument.vue'
-import StepInstrumentSlide from './components/StepInstrumentSlide.vue'
-import useState from './composables/useState'
+import StepInstrument from './flows/onboarding/steps/Instrument/StepInstrument.vue'
+import StepInstrumentSlide from './flows/onboarding/steps/Instrument/StepInstrumentSlide.vue'
+import useState from './flows/onboarding/composables/useState'
+
 
 const StepGenre = defineAsyncComponent(() =>
-    import("./components/StepGenre.vue")
+    import("./flows/onboarding/steps/Genre/StepGenre.vue")
 )
 
 const StepAccount = defineAsyncComponent(() =>
-    import("./components/StepAccount.vue")
+    import("./flows/onboarding/steps/Account/StepAccount.vue")
 )
 
 const StepProfile = defineAsyncComponent(() =>
-    import("./components/StepProfile.vue")
+    import("./flows/onboarding/steps/Profile/StepProfile.vue")
 )
 
 const StepGenreSlide = defineAsyncComponent(() =>
-    import("./components/StepGenreSlide.vue")
+    import("./flows/onboarding/steps/Genre/StepGenreSlide.vue")
 )
 
 

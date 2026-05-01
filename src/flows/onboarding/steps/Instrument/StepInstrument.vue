@@ -8,8 +8,9 @@
 import { ref } from "vue";
 
 // import Progress from "./Progress.vue";
-import Button from "./Button.vue";
+import Button from '../../../../components/Button.vue'
 import Instrument from "./Instrument.vue";
+
 
 const emit = defineEmits(["next"]);
 const instruments = ref(["Drums", "Piano", "Guitar", "Bass", "Voice"]);

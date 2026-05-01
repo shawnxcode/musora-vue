@@ -25,7 +25,7 @@ function handleClick(item) {
     emit('update:modelValue', item)
 }
 function getImg(item) {
-    return new URL(`../assets/instrument-icons/${item.toLowerCase()}.png`, import.meta.url).href
+    return new URL(`../../../../assets/instrument-icons/${item.toLowerCase()}.png`, import.meta.url).href
 }
 </script>
 <style>

@@ -6,7 +6,7 @@
 <script setup>
 import { computed } from 'vue';
 const imgSrc = computed(() => {
-    return new URL(`../assets/instrument-bg.png`, import.meta.url).href
+    return new URL(`../../../../assets/instrument-bg.png`, import.meta.url).href
 })
 </script>
 <style>

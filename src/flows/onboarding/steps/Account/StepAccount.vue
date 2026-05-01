@@ -21,9 +21,9 @@
 import { ref } from "vue";
 
 // import Progress from "./Progress.vue";
-import Button from "./Button.vue";
-import Input from "./Input.vue";
-import Checkbox from "./Checkbox.vue";
+import Button from '../../../../components/Button.vue'
+import Input from "../../../../components/Input.vue";
+import Checkbox from "../../../../components/Checkbox.vue";
 
 const emit = defineEmits(["next"]);
 
