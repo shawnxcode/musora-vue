@@ -1,7 +1,8 @@
 <template>
     <div class="step-layout">
-        <div class="step-layout-left"></div>
-
+        <div class="step-layout-left" v-if="currentStep.slide">
+            <component :is="currentStep.slide" />
+        </div>
         <div class="step-layout-right">
             <StepHeader :title="currentStep.title" :description="currentStep.description">
                 <Progress v-if="showProgress" :steps="3" :current="step" />
@@ -22,6 +23,8 @@ import StepInstrument from './components/StepInstrument.vue'
 import StepGenre from './components/StepGenre.vue'
 import StepAccount from './components/StepAccount.vue'
 import StepProfile from './components/StepProfile.vue'
+import StepInstrumentSlide from './components/StepInstrumentSlide.vue'
+import StepGenreSlide from './components/StepGenreSlide.vue'
 
 const step = ref(1)
 
@@ -40,14 +43,16 @@ const steps = [
         title: 'CHOOSE YOUR INSTRUMENT',
         description:
             'Your Musora membership includes unlimited access to ALL of these instruments.<br/>Pick one to get started.',
-        field: 'instrument'
+        field: 'instrument',
+        slide: StepInstrumentSlide
     },
     {
         component: StepGenre,
         title: 'WHAT GENRES ARE YOU INTO?',
         description:
             'Choose your favorites so we can help you learn them! Pick as many styles as you like.',
-        field: 'genres'
+        field: 'genres',
+        slide: StepGenreSlide
     },
     {
         component: StepAccount,
@@ -92,6 +97,12 @@ function handleNext(data) {
     width: 100%;
     height: 100%;
     display: flex;
+}
+
+.step-layout-left {
+    width: 455px;
+    height: 100%;
+    overflow: hidden;
 }
 
 .step-layout-right {
