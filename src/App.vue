@@ -7,7 +7,6 @@
             <StepHeader :title="currentStep.title" :description="currentStep.description">
                 <Progress v-if="showProgress" :steps="3" :current="step" />
             </StepHeader>
-
             <component :is="currentStep.component" v-bind="currentStepProps" @next="handleNext" />
         </div>
     </div>

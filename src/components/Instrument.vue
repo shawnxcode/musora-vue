@@ -1,35 +1,45 @@
 <template>
-    <div class="m-instrument" :class="{ 'is-active': active }" @click="handleClick">
-        <div class="m-instrument-icon">
-            <img :src="imgSrc" :alt="name" />
-        </div>
-        <div class="m-instrument-name">
-            {{ name }}
-        </div>
-    </div>
+    <ul class="m-instrument-list">
+        <li v-for="item in options" :key="item">
+            <div class="m-instrument" :class="{ 'is-active': modelValue === item }" @click="handleClick(item)">
+                <div class="m-instrument-icon">
+                    <img :src="getImg(item)" :alt="item" />
+                </div>
+                <div class="m-instrument-name">
+                    {{ item }}
+                </div>
+            </div>
+        </li>
+    </ul>
 </template>
 <script setup>
-import { computed } from 'vue'
-
 const props = defineProps({
-    name: {
-        type: String,
-        required: true
-    },
-    active: {
-        type: Boolean,
-        default: false
+    modelValue: String,
+    options: {
+        type: Array,
+        default: () => []
     }
 })
-const emit = defineEmits(['click'])
-function handleClick(e) {
-    emit('click', e)
+const emit = defineEmits(['update:modelValue'])
+function handleClick(item) {
+    emit('update:modelValue', item)
 }
-const imgSrc = computed(() => {
-    return new URL(`../assets/instrument-icons/${props.name}.png`, import.meta.url).href
-})
+function getImg(item) {
+    return new URL(`../assets/instrument-icons/${item.toLowerCase()}.png`, import.meta.url).href
+}
 </script>
 <style>
+.m-instrument-list {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.m-instrument-list>li {
+    margin: 0 4px;
+    cursor: pointer;
+}
+
 .m-instrument {
     width: 114px;
     height: 100px;
@@ -44,8 +54,8 @@ const imgSrc = computed(() => {
 .m-instrument:hover,
 .m-instrument.is-active {
     background: var(--Primary-2, #F6F8FC);
+    border-color: var(--Primary-10, #0C1524)
 }
-
 
 .m-instrument-icon {
     width: 40px;

@@ -41,7 +41,7 @@ function handleNext() {
     if (!isValidEmail(value)) return
 
     emit("next", {
-        email: email.value,
+        email: value,
         receiveTips: receiveTips.value,
     });
 }

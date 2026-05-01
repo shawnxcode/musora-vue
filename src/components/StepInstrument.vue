@@ -1,22 +1,6 @@
 <template lang="">
   <div class="step-instrument">
-    <!-- <Progress
-      :steps="4"
-      :current="1"
-      title="CHOOSE YOUR INSTRUMENT"
-      description="Your Musora membership includes unlimited access to ALL of these instruments.
-Pick one to get started."
-    /> -->
-    <ul class="step-instrument-list">
-      <li
-        v-for="item in instruments"
-        :key="item"
-        
-      >
-        <Instrument :name="item" :active="selectedInstrument === item" @click="selectInstrument(item)" />
-      </li>
-    </ul>
-   
+    <Instrument v-model="selectedInstrument" :options="instruments"/>
   </div>
    <Button @click="handleNext" :disabled="!selectedInstrument">NEXT</Button>
 </template>
@@ -28,12 +12,12 @@ import Button from "./Button.vue";
 import Instrument from "./Instrument.vue";
 
 const emit = defineEmits(["next"]);
-const instruments = ref(["drums", "piano", "guitar", "bass", "voice"]);
+const instruments = ref(["Drums", "Piano", "Guitar", "Bass", "Voice"]);
 const selectedInstrument = ref("");
 
-function selectInstrument(item) {
-  selectedInstrument.value = item;
-}
+// function selectInstrument(item) {
+//   selectedInstrument.value = item;
+// }
 function handleNext() {
   if (!selectedInstrument.value) return;
   emit("next", selectedInstrument.value);
@@ -42,16 +26,5 @@ function handleNext() {
 <style>
 .step-instrument {
   padding-bottom: 32px;
-}
-
-.step-instrument-list {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-}
-
-.step-instrument-list>li {
-  margin: 0 4px;
-  cursor: pointer;
 }
 </style>
