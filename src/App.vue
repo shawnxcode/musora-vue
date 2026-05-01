@@ -13,17 +13,30 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, defineAsyncComponent } from 'vue'
 
 import StepHeader from './components/StepHeader.vue'
 import Progress from './components/Progress.vue'
 
 import StepInstrument from './components/StepInstrument.vue'
-import StepGenre from './components/StepGenre.vue'
-import StepAccount from './components/StepAccount.vue'
-import StepProfile from './components/StepProfile.vue'
 import StepInstrumentSlide from './components/StepInstrumentSlide.vue'
-import StepGenreSlide from './components/StepGenreSlide.vue'
+
+const StepGenre = defineAsyncComponent(() =>
+    import("./components/StepGenre.vue")
+)
+
+const StepAccount = defineAsyncComponent(() =>
+    import("./components/StepAccount.vue")
+)
+
+const StepProfile = defineAsyncComponent(() =>
+    import("./components/StepProfile.vue")
+)
+
+const StepGenreSlide = defineAsyncComponent(() =>
+    import("./components/StepGenreSlide.vue")
+)
+
 
 const step = ref(1)
 
