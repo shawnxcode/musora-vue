@@ -1,5 +1,5 @@
 <template>
-    <div class="m-instrument" :class="{ 'is-active': active }">
+    <div class="m-instrument" :class="{ 'is-active': active }" @click="handleClick">
         <div class="m-instrument-icon">
             <img :src="imgSrc" :alt="name" />
         </div>
@@ -9,7 +9,7 @@
     </div>
 </template>
 <script setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
     name: {
@@ -21,7 +21,10 @@ const props = defineProps({
         default: false
     }
 })
-
+const emit = defineEmits(['click'])
+function handleClick(e) {
+    emit('click', e)
+}
 const imgSrc = computed(() => {
     return new URL(`../assets/instrument-icons/${props.name}.png`, import.meta.url).href
 })
@@ -34,9 +37,11 @@ const imgSrc = computed(() => {
     border: 1px solid var(--Primary-4, #D5DBE4);
     background: var(--Primary-1, #FFFFFF);
     border-radius: 8px;
+    transition: all 0.3s ease-in;
 
 }
 
+.m-instrument:hover,
 .m-instrument.is-active {
     background: var(--Primary-2, #F6F8FC);
 }

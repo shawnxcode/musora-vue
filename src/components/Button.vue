@@ -22,7 +22,7 @@ function handleClick(e) {
     background: var(--Primary-10, #0C1524);
     width: 400px;
     height: 40px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     border-radius: 25px;
     color: var(--Primary-1, #FFFFFF);
     font-family: Bebas Neue;
@@ -30,6 +30,8 @@ function handleClick(e) {
     font-size: 16px;
     line-height: 24px;
     cursor: pointer;
+    border: 0 none;
+    transition: all 0.3s ease-in;
 }
 
 .m-btn.is-disabled {
