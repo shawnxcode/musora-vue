@@ -20,6 +20,7 @@ import Progress from './components/Progress.vue'
 
 import StepInstrument from './components/StepInstrument.vue'
 import StepInstrumentSlide from './components/StepInstrumentSlide.vue'
+import useState from './composables/useState'
 
 const StepGenre = defineAsyncComponent(() =>
     import("./components/StepGenre.vue")
@@ -40,14 +41,15 @@ const StepGenreSlide = defineAsyncComponent(() =>
 
 const step = ref(1)
 
-const form = reactive({
-    instrument: '',
-    genres: [],
-    account: {
-        email: '',
-        receiveTips: false
-    }
-})
+// const form = reactive({
+//     instrument: '',
+//     genres: [],
+//     account: {
+//         email: '',
+//         receiveTips: false
+//     }
+// })
+const { form, updateField } = useState()
 
 const steps = [
     {
@@ -95,7 +97,7 @@ function handleNext(data) {
     const field = currentStep.value.field
 
     if (field) {
-        form[field] = data
+        updateField(field, data)
     }
 
     if (step.value < steps.length) {
