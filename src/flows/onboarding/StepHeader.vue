@@ -29,7 +29,7 @@ const props = defineProps({
     width: 50px;
     height: 40px;
     margin: 0 auto 32px;
-    background: url('../assets/musora.png');
+    background: url('../../assets/musora.png');
     background-size: contain;
 }
 
